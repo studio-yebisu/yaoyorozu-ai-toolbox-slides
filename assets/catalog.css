@@ -1,21 +1,22 @@
 /* ===== Design tokens ===== */
 :root {
-  --paper: #f5f2ec;
-  --paper-deep: #ebe6dc;
-  --surface: #fffdf9;
-  --ink: #1d201e;
-  --ink-soft: #3f4440;
-  --muted: #62665f;
-  --line: #ddd7cb;
-  --line-strong: #c9c1b2;
-  --accent: #b8431d;
-  --accent-dark: #93330f;
-  --accent-wash: #f6e4da;
+  --paper: #f2eee3;
+  --paper-deep: #e7e1d0;
+  --surface: #fbf9f3;
+  --ink: #17150f;
+  --ink-soft: #4f4a3f;
+  --muted: #4f4a3f;
+  --line: #d9d2bf;
+  --line-strong: #b9b099;
+  --accent: #2b47c8;
+  --accent-dark: #1d3190;
+  --accent-wash: #e3e7f6;
+  --lime: #cbef3a;
   --white: #fff;
   --radius: 14px;
   --radius-sm: 8px;
-  --sans: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic UI", "Yu Gothic", Meiryo, -apple-system, BlinkMacSystemFont, sans-serif;
-  --serif: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", YuMincho, "BIZ UDPMincho", serif;
+  --sans: "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, system-ui, sans-serif;
+  --serif: "Hiragino Mincho ProN", "Yu Mincho", YuMincho, "BIZ UDPMincho", "Noto Serif JP", serif;
   --font: var(--sans);
   --shadow: 0 1px 2px rgba(40, 32, 20, .04), 0 8px 24px -12px rgba(40, 32, 20, .14);
   --shadow-lift: 0 2px 4px rgba(40, 32, 20, .05), 0 18px 40px -16px rgba(40, 32, 20, .26);
@@ -34,33 +35,37 @@
 
 /* ===== Base ===== */
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 96px; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; scroll-padding-top: 124px; -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.7; -webkit-font-smoothing: antialiased; font-feature-settings: "palt" 0; }
 img { max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; }
 a, button { -webkit-tap-highlight-color: transparent; }
-a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; box-shadow: 0 0 0 5px var(--lime); border-radius: 0; }
 ::selection { background: var(--accent-wash); color: var(--ink); }
 .page-width { width: min(1240px, calc(100% - 80px)); margin: 0 auto; }
 .skip-link { position: fixed; left: 16px; top: -80px; z-index: 30; background: var(--ink); color: #fff; padding: 12px 20px; border-radius: var(--radius-sm); font-weight: 700; }
 .skip-link:focus { top: 16px; }
 
 /* ===== Header ===== */
-.site-header { position: sticky; top: 0; z-index: 10; background: rgba(245, 242, 236, .92); border-bottom: 1px solid var(--line); -webkit-backdrop-filter: saturate(1.4) blur(14px); backdrop-filter: saturate(1.4) blur(14px); }
-.header-inner { width: min(1240px, calc(100% - 80px)); margin: 0 auto; min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-.brand { display: flex; align-items: center; gap: 14px; min-height: 44px; font-size: 15px; font-weight: 700; letter-spacing: .01em; line-height: 1.3; }
-.brand small { display: block; font-size: 11px; font-weight: 500; color: var(--muted); letter-spacing: .04em; margin-top: 3px; }
+.site-header { position: sticky; top: 0; z-index: 10; background: var(--paper); border-bottom: 1px solid var(--ink); }
+.header-inner { width: min(1240px, calc(100% - 80px)); margin: 0 auto; min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; padding-block: 8px; }
+.brand { display: flex; align-items: center; gap: 14px; min-height: 44px; font-size: clamp(1rem, 2.2vw, 1.2rem); font-weight: 700; letter-spacing: -.035em; line-height: 1.3; font-family: "Segoe UI", Arial, system-ui, sans-serif; text-decoration: none; }
+.brand small { display: block; font-size: 11px; font-weight: 500; color: var(--muted); letter-spacing: .02em; margin-top: 3px; }
 .brand-mark { display: block; position: relative; width: 32px; height: 30px; flex: 0 0 32px; }
 .brand-mark i { position: absolute; width: 24px; height: 17px; border: 1.5px solid var(--ink); border-radius: 3px; background: var(--paper); }
 .brand-mark i:nth-child(1) { left: 0; top: 0; }
 .brand-mark i:nth-child(2) { left: 4px; top: 6px; }
 .brand-mark i:nth-child(3) { left: 8px; top: 12px; background: var(--accent); border-color: var(--accent); }
 .site-header nav { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; }
-.site-header nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 999px; transition: background .2s, color .2s; }
+.site-header nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 0; transition: background .2s, color .2s; }
 .site-header nav a:hover { background: var(--paper-deep); }
-.github-link { border: 1px solid var(--line-strong); }
-.github-link span { padding-left: 6px; }
+/* Family specialist-site row, also reused in the footer. */
+.header-sites { flex-basis: 100%; display: flex; flex-wrap: nowrap; gap: .125rem 1.5rem; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: thin; font-size: .8125rem; font-weight: 600; }
+.header-sites a { display: inline-flex; align-items: center; min-height: 2.75rem; min-width: 2.75rem; text-decoration: none; white-space: nowrap; color: var(--ink); padding: 0; }
+.header-sites a:hover { background: transparent; text-decoration: underline; }
+.header-sites a[aria-current="page"] { font-weight: 700; box-shadow: inset 0 -3px 0 var(--accent); }
+.footer-sites { width: min(1240px, calc(100% - 80px)); margin: 12px auto 0; padding-top: 12px; border-top: 1px solid var(--line); }
 
 /* ===== Shared type ===== */
 h1 { margin: 0; font-family: var(--serif); font-size: clamp(40px, 5.6vw, 76px); line-height: 1.28; font-weight: 600; letter-spacing: .01em; }
@@ -120,7 +125,7 @@ h2, h3 { font-family: var(--serif); font-weight: 600; }
 .source-links > span { margin-left: auto; font-variant-numeric: tabular-nums; }
 
 /* ===== Footer ===== */
-.site-footer { border-top: 1px solid var(--line); background: var(--paper-deep); }
+.site-footer { border-top: 1px solid var(--ink); background: var(--paper); }
 .footer-inner { padding: 24px 0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px; font-size: 12px; color: var(--muted); }
 .footer-inner > a, .site-footer p a { display: inline-flex; align-items: center; min-height: 40px; }
 .footer-brand { color: var(--ink); font-weight: 700; font-size: 14px; }
@@ -161,13 +166,14 @@ html.dialog-open { overflow: hidden; }
   .genre-label { font-size: 16px; gap: 9px; }
 }
 @media (max-width: 620px) {
-  html { scroll-padding-top: 76px; }
+  html { scroll-padding-top: 128px; }
   body { font-size: 15px; }
   .page-width, .header-inner { width: calc(100% - 32px); }
   .header-inner { min-height: 62px; gap: 10px; }
   .brand { gap: 10px; font-size: 14px; }
   .brand small { font-size: 10px; letter-spacing: .02em; }
-  .site-header nav > a:first-child { display: none; }
+  /* In-page nav only: never hide the first link of the specialist-site row (.header-sites). */
+  .site-header nav:not(.header-sites) > a:first-child { display: none; }
   .site-header nav a.github-link { display: none; }
   .site-header nav a { padding: 0 14px; font-size: 12px; }
   .hero { padding: 32px 0 28px; gap: 22px; }
@@ -195,7 +201,7 @@ html.dialog-open { overflow: hidden; }
   .dialog-caption { padding: 14px 18px 18px; }
 }
 @media (max-width: 560px) {
-  html { scroll-padding-top: 112px; }
+  html { scroll-padding-top: 128px; }
   .header-inner { flex-wrap: wrap; }
   .brand { flex: 1 1 100%; }
   .site-header nav { flex: 1 1 100%; }
