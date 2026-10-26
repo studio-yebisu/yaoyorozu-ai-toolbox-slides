@@ -168,6 +168,7 @@ html.dialog-open { overflow: hidden; }
   .brand { gap: 10px; font-size: 14px; }
   .brand small { font-size: 10px; letter-spacing: .02em; }
   .site-header nav > a:first-child { display: none; }
+  .site-header nav a.github-link { display: none; }
   .site-header nav a { padding: 0 14px; font-size: 12px; }
   .hero { padding: 32px 0 28px; gap: 22px; }
   h1 { font-size: clamp(32px, 9.4vw, 44px); line-height: 1.34; }
@@ -192,6 +193,13 @@ html.dialog-open { overflow: hidden; }
   .dialog-header h2 { font-size: 18px; }
   .dialog-image { padding: 10px; }
   .dialog-caption { padding: 14px 18px 18px; }
+}
+@media (max-width: 560px) {
+  html { scroll-padding-top: 112px; }
+  .header-inner { flex-wrap: wrap; }
+  .brand { flex: 1 1 100%; }
+  .site-header nav { flex: 1 1 100%; }
+  .site-header nav a { white-space: nowrap; }
 }
 @media (hover: none) { .zoom-hint { display: none; } }
 @media (prefers-reduced-motion: reduce) {
